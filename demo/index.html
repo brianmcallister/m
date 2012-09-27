@@ -1,0 +1,49 @@
+<!doctype html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Custom Select jQuery Plugin</title>
+    <meta name="description" content="Custom Select jQuery Plugin">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    
+    <script data-main="assets/js/script" src="assets/js/lib/require.min.js"></script>
+</head>
+
+<body>
+  <h1>Simple custom select demo.</h1>
+  
+  <p>blah blah blah</p>
+  
+  <select name="test1" class="test1">
+    <option value="">Placeholder text.</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/lib/jquery-1.8.2.min.js"><\/script>')</script>
+  
+  <script src="../src/customMenus.jquery.js"></script>
+  
+  <script>
+    $('.test1').customSelectBox();
+  </script>
+  
+  <script>
+      // var _gaq=[['_setAccount','UA-35116809-1'],['_trackPageview']];
+      // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      // g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      // s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>
