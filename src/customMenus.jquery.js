@@ -21,6 +21,7 @@
     // Set up options
     this.originalOptions = options || {};
     this.defaults = {
+      classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
       clickToOpen: true, // Click the title to open the dropdown list. Behaves like a regular select box.
       unicodeArrow: false // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
     };
@@ -30,6 +31,11 @@
      * Initialize.
      */
     this.initialize = function () {
+      var pre = this.options.classPrefix;
+      
+      // Set up the correct class prefix.
+      this.options.classPrefix = pre ? pre + '-' : '';
+      
       privateApi.setElementReferences()
         .buildCustomHtml()
         .setPlaceholderText()
@@ -38,13 +44,17 @@
 
     // Private methods.
     privateApi = {
+      prefix: function (className) {
+        return plugin.options.classPrefix + className;
+      },
+      
       setElementReferences: function () {
         var icon;
 
-        plugin.$wrapper = $('<div class="m-select-box-wrapper"></div>');
-        plugin.$title = $('<span class="m-title"></span>');
+        plugin.$wrapper = $('<div class="' + this.prefix('select-box-wrapper') + '"></div>');
+        plugin.$title = $('<span class="' + this.prefix('title') + '"></span>');
         plugin.$titleTarget = plugin.$title;
-        plugin.$list = $('<ul class="m-list"></ul>');
+        plugin.$list = $('<ul class="' + this.prefix('list') + '"></ul>');
 
         if (plugin.options.unicodeArrow) {
           icon = '&#x25BE;';
@@ -55,11 +65,11 @@
           }
 
           // Update the title to accomodate the text and the icon.
-          plugin.$title.attr('class', 'm-title-wrap')
-            .append('<span class="m-title-target"></span><span class="m-arrow-icon">' + icon + '</span>');
+          plugin.$title.attr('class', this.prefix('title-wrap'))
+            .append('<span class="' + this.prefix('title-target') + '"></span><span class="' + this.prefix('arrow-icon') + '">' + icon + '</span>');
 
           // Update the new target.
-          plugin.$titleTarget = plugin.$title.find('.m-title-target');
+          plugin.$titleTarget = plugin.$title.find('.' + this.prefix('title-target'));
         }
 
         return this;
@@ -67,6 +77,7 @@
 
       buildCustomHtml: function () {
         var $options = plugin.$select.find('option'),
+          privateApi = this,
           hasPlaceholder = false;
 
         // Wrap the select and update the $wrapper element.
@@ -82,7 +93,7 @@
 
           // Add a classname for the placeholder (only one!)
           if (val === '' && !hasPlaceholder) {
-            li = li.substring(0, 4) + 'class="m-placeholder" ' + li.substring(4);
+            li = li.substring(0, 4) + 'class="' + privateApi.prefix('placeholder') + '" ' + li.substring(4);
             hasPlaceholder = true;
           }
 
