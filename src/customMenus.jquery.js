@@ -23,7 +23,6 @@
     this.defaults = {
       clickToOpen: true, // Click the title to open the dropdown list.
       unicodeArrow: false, // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
-      hideSelected: false, // Hide options in the list when they're selected.
       hidePlaceholder: true // Hide the placeholder option from the list entirely.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
@@ -101,10 +100,7 @@
             data = privateApi.getOptionData($target);
             
           privateApi.updateSelect(data);
-          
-          if (plugin.options.hideSelected) {
-            $target.css('display', 'none').siblings().css('display', 'block');
-          }
+          $target.addClass('selected').siblings().removeClass('selected');
         });
 
         // Update m by changing the select box.

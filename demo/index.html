@@ -35,6 +35,10 @@
         display: none;
       }
       
+      .selected {
+        background: red;
+      }
+      
       /*
       .m-list {
         display: none;
@@ -77,7 +81,7 @@
   <script src="../src/customMenus.jquery.js"></script>
   
   <script>
-    var $select1 = $('.test1').m({unicodeArrow: true});
+    var $select1 = $('.test1').m({clickToOpen: false, unicodeArrow: true});
     
     $('button').on('click', function () {
       $select1.val(event.target.className.substr(-1));
