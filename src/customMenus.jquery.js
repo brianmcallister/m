@@ -27,7 +27,8 @@
       hidePlaceholder: true // Hide the placeholder option from the list entirely.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
-
+    
+    console.log('options', this.options);
     /**
      * Initialize.
      */
@@ -41,9 +42,28 @@
     // Private methods.
     privateApi = {
       setElementReferences: function () {
+        var arrow, icon;
+        
         plugin.$wrapper = $('<div class="m-select-box-wrapper"></div>');
         plugin.$title = $('<span class="m-title"></span>');
+        plugin.$titleTarget = plugin.$title;
         plugin.$list = $('<ul class="m-list"></ul>');
+        
+        if (plugin.options.unicodeArrow) {
+          icon = '&#x25BE;';
+          
+          // Use a string if it's passed.
+          if (typeof plugin.options.unicodeArrow === 'string') {
+            icon = plugin.options.unicodeArrow;
+          }
+          
+          // Update the title to accomodate the text and the icon.
+          plugin.$title.attr('class', 'm-title-wrap')
+            .append('<span class="m-title-target"></span><span class="m-arrow-icon">' + icon + '</span>');
+          
+          // Update the new target.
+          plugin.$titleTarget = plugin.$title.find('.m-title-target');
+        }
 
         return this;
       },
@@ -142,7 +162,7 @@
       },
 
       updateTitle: function (data) {
-        plugin.$title.attr('data-value', data.value).text(data.text);
+        plugin.$titleTarget.text(data.text);
         return this;
       },
 
