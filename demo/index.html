@@ -16,6 +16,21 @@
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     
     <script data-main="assets/js/script" src="assets/js/lib/require.min.js"></script>
+    
+    <style>
+      .sample-container {
+        width: 800px;
+        margin: 0 auto;
+      }
+      
+      .m-container {
+        background: #eee;
+      }
+      
+      .m-buttons {
+        background: #ddd;
+      }
+    </style>
 </head>
 
 <body>
@@ -23,16 +38,22 @@
   
   <p>blah blah blah</p>
   
-  <select name="test1" class="test1">
-    <option value="">Placeholder text.</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-  
-  <button class="button1">Update</button>
-  <button class="button2">Update</button>
-  <button class="button3">Update</button>
+  <div class="sample-container">
+    <div class="m-container">
+      <select name="test1" class="test1">
+        <option value="">Placeholder text.</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+    </div>
+    
+    <div class="m-buttons">
+      <button class="button1">Update</button>
+      <button class="button2">Update</button>
+      <button class="button3">Update</button>
+    </div>
+  </div>
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="assets/js/lib/jquery-1.8.2.min.js"><\/script>')</script>

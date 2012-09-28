@@ -8,27 +8,33 @@
 
   /**
    * m class
-   * @author mcallister
+   * @author Brian McAllister - http://brianmcallister.com
    * @version 0.0.1
    */
   $.m = function (element, options) {
     var plugin = this,
       privateApi = {};
 
+    // Reference to main element.
     this.$select = $(element);
+
+    // Set up options
     this.originalOptions = options || {};
     this.defaults = {
-      clickToOpen: true,
-      unicodeArrow: false
+      clickToOpen: true, // Click the title to open the dropdown list.
+      unicodeArrow: false, // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
+      hideSelected: true, // Hide options in the list when they're selected.
+      hidePlaceholder: true // Hide the placeholder option from the list entirely.
     };
-
     this.options = $.extend(this.defaults, this.originalOptions);
 
+    /**
+     * Initialize.
+     */
     this.initialize = function () {
-      console.log('this el', this.$select);
-
       privateApi.setElementReferences()
         .buildCustomHtml()
+        .setPlaceholderText()
         .bindCustomEvents();
     };
 
@@ -60,7 +66,13 @@
 
         return this;
       },
-
+      
+      setPlaceholderText: function () {
+        this.updateTitle(this.getOptionData(this.getSelected()));
+        
+        return this;
+      },
+      
       bindCustomEvents: function () {
         var privateApi = this;
 
@@ -72,7 +84,7 @@
 
         // Update m by changing the select box.
         plugin.$select.on('change.m', function () {
-          var data = privateApi.getOptionData(plugin.$select.find(':selected'));
+          var data = privateApi.getOptionData(privateApi.getSelected());
           privateApi.updateTitle(data);
         });
 
@@ -81,6 +93,10 @@
 
       getOptionData: function ($el) {
         return {text: $el.text(), value: $el.val() || $el.data('value')};
+      },
+      
+      getSelected: function () {
+        return plugin.$select.find(':selected');
       },
 
       updateTitle: function (data) {
