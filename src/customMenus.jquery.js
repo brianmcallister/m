@@ -19,11 +19,11 @@
     this.originalOptions = options || {};
     this.defaults = {
       classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
-      clickToOpen: true, // Click the title to open the dropdown list. Behaves like a regular select box.
-      arrowString: false // Add a little unicode arrow to the title. Pass true, or your own unicode or blank string.
+      clickToOpen: false, // Click the title to open the dropdown list. Behaves like a regular select box.
+      arrowString: false // Add a unicode arrow icon. Pass true, or your own unicode or even blank string.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
-    
+
     /**
      * Initialize.
      */
@@ -32,7 +32,7 @@
 
       // Set up the correct class prefix.
       this.options.classPrefix = pre ? pre + '-' : '';
-      
+
       privateApi.setElementReferences()
         .buildCustomHtml()
         .setPlaceholderText()
@@ -48,10 +48,11 @@
        */
       setElementReferences: function () {
         var icon;
-        
+
         // Reference to main element.
         plugin.$select = $(element).addClass(this.prefix('select'));
-        
+
+        // Other common elements.
         plugin.$wrapper = $('<div class="' + this.prefix('select-box-wrapper') + '"></div>');
         plugin.$title = $('<span class="' + this.prefix('title') + '"></span>');
         plugin.$titleTarget = plugin.$title;
@@ -64,7 +65,7 @@
           if (typeof plugin.options.arrowString === 'string') {
             icon = plugin.options.arrowString;
           }
-          
+
           // Update the title to accomodate the text and the icon.
           plugin.$title.attr('class', this.prefix('title-wrap'))
             .append('<span class="' + this.prefix('title-target') + '"></span><span class="' + this.prefix('arrow-icon') + '">' + icon + '</span>');
@@ -75,7 +76,7 @@
 
         return this;
       },
-      
+
       /**
        * Create the custom markup for the list.
        * @private
@@ -108,7 +109,7 @@
 
         return this;
       },
-      
+
       /**
        * Can update the title with whatever is currently selected,
        * but is convenient for setting the placeholder text on initialize.
@@ -118,7 +119,7 @@
         this.updateTitle(this.getOptionData(this.getSelected()));
         return this;
       },
-      
+
       /**
        * Set up custom events for handling the custom markup, and deal with
        * change events on select box.
@@ -157,7 +158,7 @@
         plugin.$list.css('display', 'block');
         return this;
       },
-      
+
       /**
        * Hide the dropdown list.
        * @private
@@ -166,7 +167,7 @@
         plugin.$list.css('display', 'none');
         return this;
       },
-      
+
       /**
        * Bind the events that simulate regular select box behavior. Used for the
        * clickToOpen option.
@@ -201,7 +202,7 @@
           }
         });
       },
-      
+
       /**
        * Return a classname that includes the classPrefix option.
        * @private
@@ -210,7 +211,7 @@
       prefix: function (className) {
         return plugin.options.classPrefix + className;
       },
-      
+
       /**
        * Return an object for updating the select box.
        * @private
@@ -219,7 +220,7 @@
       getOptionData: function ($el) {
         return {text: $el.text(), value: $el.val() || $el.data('value')};
       },
-      
+
       /**
        * Return the currently selected option.
        * @private
@@ -227,7 +228,7 @@
       getSelected: function () {
         return plugin.$select.find(':selected');
       },
-      
+
       /**
        * Update the title in the custom HTML.
        * @private
@@ -237,7 +238,7 @@
         plugin.$titleTarget.text(data.text);
         return this;
       },
-      
+
       /**
        * Update the select box.
        * @private
@@ -245,6 +246,12 @@
        */
       updateSelect: function (data) {
         plugin.$select.val(data.value);
+
+        // Check for a patched val. Fire a 'change' event if it isn't
+        if (!plugin.$select.data('m').patchedVal) {
+          plugin.$select.trigger('change');
+        }
+
         return this;
       }
     };
@@ -257,13 +264,16 @@
 
   $.fn.val = function (value) {
     var $this = $(this),
+      elData = $this.data('m'),
       newVal;
 
     // Call the old val() function...
     newVal = oldVal.apply(this, arguments);
 
     // ...fire our custom event...
-    if ($this.data('m') && value) {
+    if (elData && value) {
+      elData.patchedVal = true;
+      $this.data('m', elData);
       $this.trigger('change');
     }
 
