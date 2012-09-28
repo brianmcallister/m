@@ -32,10 +32,10 @@
      */
     this.initialize = function () {
       var pre = this.options.classPrefix;
-      
+
       // Set up the correct class prefix.
       this.options.classPrefix = pre ? pre + '-' : '';
-      
+
       privateApi.setElementReferences()
         .buildCustomHtml()
         .setPlaceholderText()
@@ -47,7 +47,7 @@
       prefix: function (className) {
         return plugin.options.classPrefix + className;
       },
-      
+
       setElementReferences: function () {
         var icon;
 
@@ -77,8 +77,7 @@
 
       buildCustomHtml: function () {
         var $options = plugin.$select.find('option'),
-          privateApi = this,
-          hasPlaceholder = false;
+          privateApi = this;
 
         // Wrap the select and update the $wrapper element.
         plugin.$select.wrap(plugin.$wrapper);
@@ -91,10 +90,9 @@
             text = $option.text(),
             li = '<li data-value="' + val + '">' + text + '</li>';
 
-          // Add a classname for the placeholder (only one!)
-          if (val === '' && !hasPlaceholder) {
+          // Add a classname for the placeholder.
+          if (val === '') {
             li = li.substring(0, 4) + 'class="' + privateApi.prefix('placeholder') + '" ' + li.substring(4);
-            hasPlaceholder = true;
           }
 
           plugin.$list.append(li);
