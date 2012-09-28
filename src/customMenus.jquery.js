@@ -44,10 +44,11 @@
 
     // Private methods.
     privateApi = {
-      prefix: function (className) {
-        return plugin.options.classPrefix + className;
-      },
-
+      /**
+       * Set up references to commonly used elements.
+       * Handle the unicodeArrow option.
+       * @private
+       */
       setElementReferences: function () {
         var icon;
 
@@ -74,7 +75,11 @@
 
         return this;
       },
-
+      
+      /**
+       * Create the custom markup for the list.
+       * @private
+       */
       buildCustomHtml: function () {
         var $options = plugin.$select.find('option'),
           privateApi = this;
@@ -103,12 +108,22 @@
 
         return this;
       },
-
+      
+      /**
+       * Can update the title with whatever is currently selected,
+       * but is convenient for setting the placeholder text on initialize.
+       * @private
+       */
       setPlaceholderText: function () {
         this.updateTitle(this.getOptionData(this.getSelected()));
         return this;
       },
-
+      
+      /**
+       * Set up custom events for handling the custom markup, and deal with
+       * change events on select box.
+       * @private
+       */
       bindCustomEvents: function () {
         var privateApi = this;
 
@@ -134,16 +149,29 @@
         return this;
       },
 
+      /**
+       * Show the dropdown list.
+       * @private
+       */
       showList: function () {
         plugin.$list.css('display', 'block');
         return this;
       },
-
+      
+      /**
+       * Hide the dropdown list.
+       * @private
+       */
       hideList: function () {
         plugin.$list.css('display', 'none');
         return this;
       },
-
+      
+      /**
+       * Bind the events that simulate regular select box behavior. Used for the
+       * clickToOpen option.
+       * @private
+       */
       clickToOpen: function () {
         var $win = $(window),
           privateApi = this;
@@ -173,20 +201,48 @@
           }
         });
       },
-
+      
+      /**
+       * Return a classname that includes the classPrefix option.
+       * @private
+       * @param {String} className Class name to prefix.
+       */
+      prefix: function (className) {
+        return plugin.options.classPrefix + className;
+      },
+      
+      /**
+       * Return an object for updating the select box.
+       * @private
+       * @param {jQuery Object} $el Element to get data from.
+       */
       getOptionData: function ($el) {
         return {text: $el.text(), value: $el.val() || $el.data('value')};
       },
-
+      
+      /**
+       * Return the currently selected option.
+       * @private
+       */
       getSelected: function () {
         return plugin.$select.find(':selected');
       },
-
+      
+      /**
+       * Update the title in the custom HTML.
+       * @private
+       * @param {Object} data Data to use for updating. Should contain a text property.
+       */
       updateTitle: function (data) {
         plugin.$titleTarget.text(data.text);
         return this;
       },
-
+      
+      /**
+       * Update the select box.
+       * @private
+       * @param {Object} data Data to use. Should contain a value property.
+       */
       updateSelect: function (data) {
         plugin.$select.val(data.value);
         return this;
