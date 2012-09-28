@@ -15,18 +15,15 @@
     var plugin = this,
       privateApi = {};
 
-    // Reference to main element.
-    this.$select = $(element).addClass('m-select');
-
     // Set up options
     this.originalOptions = options || {};
     this.defaults = {
       classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
       clickToOpen: true, // Click the title to open the dropdown list. Behaves like a regular select box.
-      unicodeArrow: false // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
+      unicodeArrow: false // Add a little unicode arrow to the title. Pass true, or your own unicode or blank string.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
-
+    
     /**
      * Initialize.
      */
@@ -35,7 +32,7 @@
 
       // Set up the correct class prefix.
       this.options.classPrefix = pre ? pre + '-' : '';
-
+      
       privateApi.setElementReferences()
         .buildCustomHtml()
         .setPlaceholderText()
@@ -51,20 +48,23 @@
        */
       setElementReferences: function () {
         var icon;
-
+        
+        // Reference to main element.
+        plugin.$select = $(element).addClass(this.prefix('select'));
+        
         plugin.$wrapper = $('<div class="' + this.prefix('select-box-wrapper') + '"></div>');
         plugin.$title = $('<span class="' + this.prefix('title') + '"></span>');
         plugin.$titleTarget = plugin.$title;
         plugin.$list = $('<ul class="' + this.prefix('list') + '"></ul>');
 
-        if (plugin.options.unicodeArrow) {
+        if (plugin.options.unicodeArrow !== false) {
           icon = '&#x25BE;';
 
           // Use a string if it's passed.
           if (typeof plugin.options.unicodeArrow === 'string') {
             icon = plugin.options.unicodeArrow;
           }
-
+          
           // Update the title to accomodate the text and the icon.
           plugin.$title.attr('class', this.prefix('title-wrap'))
             .append('<span class="' + this.prefix('title-target') + '"></span><span class="' + this.prefix('arrow-icon') + '">' + icon + '</span>');
