@@ -21,11 +21,11 @@
     // Set up options
     this.originalOptions = options || {};
     this.defaults = {
-      clickToOpen: true, // Click the title to open the dropdown list.
+      clickToOpen: true, // Click the title to open the dropdown list. Behaves like a regular select box.
       unicodeArrow: false // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
-    
+
     /**
      * Initialize.
      */
@@ -39,25 +39,25 @@
     // Private methods.
     privateApi = {
       setElementReferences: function () {
-        var arrow, icon;
-        
+        var icon;
+
         plugin.$wrapper = $('<div class="m-select-box-wrapper"></div>');
         plugin.$title = $('<span class="m-title"></span>');
         plugin.$titleTarget = plugin.$title;
         plugin.$list = $('<ul class="m-list"></ul>');
-        
+
         if (plugin.options.unicodeArrow) {
           icon = '&#x25BE;';
-          
+
           // Use a string if it's passed.
           if (typeof plugin.options.unicodeArrow === 'string') {
             icon = plugin.options.unicodeArrow;
           }
-          
+
           // Update the title to accomodate the text and the icon.
           plugin.$title.attr('class', 'm-title-wrap')
             .append('<span class="m-title-target"></span><span class="m-arrow-icon">' + icon + '</span>');
-          
+
           // Update the new target.
           plugin.$titleTarget = plugin.$title.find('.m-title-target');
         }
@@ -78,14 +78,14 @@
           var $option = $(option),
             val = $option.val(),
             text = $option.text(),
-            li = '<li data-value="' + val + '">' + text + '</li>'
-          
+            li = '<li data-value="' + val + '">' + text + '</li>';
+
           // Add a classname for the placeholder (only one!)
           if (val === '' && !hasPlaceholder) {
             li = li.substring(0, 4) + 'class="m-placeholder" ' + li.substring(4);
             hasPlaceholder = true;
           }
-            
+
           plugin.$list.append(li);
         });
 
@@ -107,7 +107,7 @@
         plugin.$list.on('click', 'li', function (event) {
           var $target = $(event.target),
             data = privateApi.getOptionData($target);
-            
+
           privateApi.updateSelect(data);
           $target.addClass('selected').siblings().removeClass('selected');
         });
@@ -138,7 +138,7 @@
       clickToOpen: function () {
         var $win = $(window),
           privateApi = this;
-        
+
         plugin.$list.css('display', 'none') // You probably want this.
           // Clicking an li always closes the list.
           .on('click.m', 'li', function () {
