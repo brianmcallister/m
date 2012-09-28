@@ -23,7 +23,7 @@
     this.defaults = {
       clickToOpen: true, // Click the title to open the dropdown list.
       unicodeArrow: false, // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
-      hideSelected: true, // Hide options in the list when they're selected.
+      hideSelected: false, // Hide options in the list when they're selected.
       hidePlaceholder: true // Hide the placeholder option from the list entirely.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
@@ -97,8 +97,14 @@
 
         // Update m by clicking dropdown list items.
         plugin.$list.on('click', 'li', function (event) {
-          var data = privateApi.getOptionData($(event.target));
+          var $target = $(event.target),
+            data = privateApi.getOptionData($target);
+            
           privateApi.updateSelect(data);
+          
+          if (plugin.options.hideSelected) {
+            $target.css('display', 'none').siblings().css('display', 'block');
+          }
         });
 
         // Update m by changing the select box.
@@ -127,12 +133,13 @@
       clickToOpen: function () {
         var $win = $(window),
           privateApi = this;
-
-        // Clicking an li always closes the list.
-        plugin.$list.on('click.m', 'li', function () {
-          privateApi.hideList();
-          $win.off('click.m'); // Remove this handler if it exists.
-        });
+        
+        plugin.$list.css('display', 'none') // You probably want this.
+          // Clicking an li always closes the list.
+          .on('click.m', 'li', function () {
+            privateApi.hideList();
+            $win.off('click.m'); // Remove this handler if it exists.
+          });
 
         plugin.$title.on('click.m', function () {
           // Either show or hide the list.
