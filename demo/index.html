@@ -85,7 +85,7 @@
   <script src="../src/customMenus.jquery.js"></script>
   
   <script>
-    var $select1 = $('.test1').m({clickToOpen: false, unicodeArrow: true});
+    var $select1 = $('.test1').m({clickToOpen: false, arrowString: true});
     
     $('button').on('click', function () {
       $select1.val(event.target.className.substr(-1));

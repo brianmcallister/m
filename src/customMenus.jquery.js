@@ -20,7 +20,7 @@
     this.defaults = {
       classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
       clickToOpen: true, // Click the title to open the dropdown list. Behaves like a regular select box.
-      unicodeArrow: false // Add a little unicode arrow to the title. Pass true, or your own unicode or blank string.
+      arrowString: false // Add a little unicode arrow to the title. Pass true, or your own unicode or blank string.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
     
@@ -43,7 +43,7 @@
     privateApi = {
       /**
        * Set up references to commonly used elements.
-       * Handle the unicodeArrow option.
+       * Handle the arrowString option.
        * @private
        */
       setElementReferences: function () {
@@ -57,12 +57,12 @@
         plugin.$titleTarget = plugin.$title;
         plugin.$list = $('<ul class="' + this.prefix('list') + '"></ul>');
 
-        if (plugin.options.unicodeArrow !== false) {
+        if (plugin.options.arrowString !== false) {
           icon = '&#x25BE;';
 
           // Use a string if it's passed.
-          if (typeof plugin.options.unicodeArrow === 'string') {
-            icon = plugin.options.unicodeArrow;
+          if (typeof plugin.options.arrowString === 'string') {
+            icon = plugin.options.arrowString;
           }
           
           // Update the title to accomodate the text and the icon.
