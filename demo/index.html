@@ -30,6 +30,20 @@
       .m-buttons {
         background: #ddd;
       }
+      
+      .m-select {
+        display: none;
+      }
+      
+      .m-list {
+        display: none;
+      }
+      
+      /*
+      .m-select-box-wrapper:hover .m-list {
+        display: block;
+      }
+      */
     </style>
 </head>
 
@@ -65,6 +79,10 @@
     
     $('button').on('click', function () {
       $select1.val(event.target.className.substr(-1));
+    });
+    
+    $select1.on('change', function () {
+      console.log('change', $select1.val());
     });
   </script>
   
