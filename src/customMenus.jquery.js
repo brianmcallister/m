@@ -22,12 +22,10 @@
     this.originalOptions = options || {};
     this.defaults = {
       clickToOpen: true, // Click the title to open the dropdown list.
-      unicodeArrow: false, // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
-      hidePlaceholder: true // Hide the placeholder option from the list entirely.
+      unicodeArrow: false // Add a little unicode arrow to the title. Pass true, or your own arrow unicode.
     };
     this.options = $.extend(this.defaults, this.originalOptions);
     
-    console.log('options', this.options);
     /**
      * Initialize.
      */
@@ -68,7 +66,8 @@
       },
 
       buildCustomHtml: function () {
-        var $options = plugin.$select.find('option');
+        var $options = plugin.$select.find('option'),
+          hasPlaceholder = false;
 
         // Wrap the select and update the $wrapper element.
         plugin.$select.wrap(plugin.$wrapper);
@@ -76,8 +75,18 @@
 
         // Create the list.
         $options.each(function (index, option) {
-          var $option = $(option);
-          plugin.$list.append('<li data-value="' + $option.val() + '">' + $option.text() + '</li>');
+          var $option = $(option),
+            val = $option.val(),
+            text = $option.text(),
+            li = '<li data-value="' + val + '">' + text + '</li>'
+          
+          // Add a classname for the placeholder (only one!)
+          if (val === '' && !hasPlaceholder) {
+            li = li.substring(0, 4) + 'class="m-placeholder" ' + li.substring(4);
+            hasPlaceholder = true;
+          }
+            
+          plugin.$list.append(li);
         });
 
         // Append the title and the list.
