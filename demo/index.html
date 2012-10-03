@@ -13,50 +13,9 @@
     <meta name="description" content="Custom Select jQuery Plugin">
     <meta name="viewport" content="width=device-width">
 
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
     
     <script data-main="assets/js/script" src="assets/js/lib/require.min.js"></script>
-    
-    <style>
-      .sample-container {
-        width: 800px;
-        margin: 0 auto;
-      }
-      
-      .m-container {
-        background: #eee;
-      }
-      
-      .m-buttons {
-        background: #ddd;
-      }
-      
-      .m-select {
-        display: none;
-      }
-      
-      /*
-      .selected {
-        background: red;
-      }
-      
-      .m-placeholder {
-        display: none;
-      }
-      */
-      
-      /*
-      .m-list {
-        display: none;
-      }
-      */
-      
-      /*
-      .m-select-box-wrapper:hover .m-list {
-        display: block;
-      }
-      */
-    </style>
 </head>
 
 <body>
@@ -65,8 +24,12 @@
       stuff about me
     </header>
     
+    <div class="intro">
+      intro and explaination
+    </div>
+    
     <div class="examples">
-      <article class="default-settings">
+      <article class="default-settings" id="default-settings">
         <header>
           <h1>Basic example.</h1>
           <p>This basic example uses all the default settings, without any of the included CSS themes. This is what your dropdowns will look like if you don't use any CSS at all. The whole point of this plugin is that you want to write your own CSS from scratch to fit in your project.</p>
@@ -88,18 +51,42 @@
         </div>
       </article>
       
-      <article class="themes">
+      <article class="themes" id="themes">
         <header>
           <h1>Themes</h1>
-          <p>However, I've gone ahead and created two themes for you to use right out of the box. I've included the Sass (how I've orignally written them) version and the compiled CSS version (although you really should be using Sass by now, tsk tsk).</p>
+          <p>However, I've gone ahead and created two themes for you to use right out of the box. I've included the Sass (how I've orignally written them) versions, and the compiled CSS versions (although you really should be using Sass by now, tsk tsk).</p>
         </header>
         
         <div class="example-content">
+          <select name="test1" class="test1">
+            <option value="">Placeholder text.</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
           
+          <select name="test1" class="test1">
+            <option value="">Placeholder text.</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          
+          <div class="download-css">
+            <div class="light-version button-bar">
+              <a href="#">sass</a>
+              <a href="#">css</a>
+            </div>
+            
+            <div class="dark-version button-bar">
+              <a href="#">sass</a>
+              <a href="#">css</a>
+            </div>
+          </div>
         </div>
       </article>
       
-      <article class="monkeypatch">
+      <article class="monkeypatch" id="monkeypatch">
         <header>
           <h1>Monkeypatched jQuery#val</h1>
           <p>You have the option to use a build of this script that uses a monkeypatched <code>val()</code> function from jQuery. This monkeypatch adds a event trigger when setting a value on your select box, so you don't need to do anything special to update m. If you choose not to use the monkeypatch, it's just a matter of firing a change event on the select box after setting the value.</p>
@@ -114,7 +101,20 @@
           </select>
         </div>
       </article>
-      
+
+      <article class="download" id="download">
+        <header>
+          <h1>Download</h1>
+        </header>
+        
+        <div class="example-content">
+          <a href="#">plugin with monkeypatch</a>
+          <a href="#">plugin without monkeypatch</a>
+          <a href="#">sass themes</a>
+          <a href="#">css themes</a>
+          <a href="#">the whole thing</a>
+        </div>
+      </article>
     </div>
   </div>
   
@@ -124,6 +124,9 @@
   <script src="assets/js/lib/customMenus.jquery.js"></script>
   
   <script>
+    /**
+     * Some inline JavaScript for example purposes. Feel free to use any of this for your own projects.
+     */
     var $select1 = $('.test1').m({clickToOpen: false, arrowString: true});
     
     $('button').on('click', function () {

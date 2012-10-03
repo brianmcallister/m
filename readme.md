@@ -1,4 +1,6 @@
-zoom
-====
+m
+=
 
-jQuery plugin for mouseover zooming. Perfect for online stores.
+mighty magical minimal macho menu
+
+yeah that's right
