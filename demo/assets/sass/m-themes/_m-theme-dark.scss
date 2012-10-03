@@ -4,5 +4,15 @@
   --------------
 
   Custom example theme for m.
+  
+  Uses:
+    _m-functions.scss
+    _m-variables.scss
 
 ---------------------------------- */
+$dark-theme-class: class-prefix('theme-dark') !default;
+
+#{$wrapper}#{$dark-theme-class} {
+  position: relative;
+  background: black;
+}

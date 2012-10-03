@@ -36,7 +36,23 @@
         </header>
         
         <div class="example-content">
-          <select name="test1" class="test1">
+          <select name="basic-example" class="basic-example">
+            <option value="">Placeholder text.</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+        </div>
+      </article>
+      
+      <article class="monkeypatch" id="monkeypatch">
+        <header>
+          <h1>Monkeypatched jQuery#val</h1>
+          <p>You have the option to use a build of this script that uses a monkeypatched <code>val()</code> function from jQuery. This monkeypatch adds a event trigger when setting a value on your select box, so you don't need to do anything special to update m. If you choose not to use the monkeypatch, it's just a matter of firing a change event on the select box after setting the value.</p>
+        </header>
+        
+        <div class="example-content">
+          <select name="test1" class="m-menu">
             <option value="">Placeholder text.</option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -54,18 +70,18 @@
       <article class="themes" id="themes">
         <header>
           <h1>Themes</h1>
-          <p>However, I've gone ahead and created two themes for you to use right out of the box. I've included the Sass (how I've orignally written them) versions, and the compiled CSS versions (although you really should be using Sass by now, tsk tsk).</p>
+          <p>However, I've gone ahead and created two themes for you to use right out of the box, just to show you how easy to style m is. I've included the Sass (how I've orignally written them) versions, and the compiled CSS versions (although you really should be using Sass by now, tsk tsk).</p>
         </header>
         
         <div class="example-content">
-          <select name="test1" class="test1">
+          <select name="theme-test-light" class="theme-light-test">
             <option value="">Placeholder text.</option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
             <option value="3">Option 3</option>
           </select>
           
-          <select name="test1" class="test1">
+          <select name="theme-test-dark" class="theme-dark-test">
             <option value="">Placeholder text.</option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -86,22 +102,6 @@
         </div>
       </article>
       
-      <article class="monkeypatch" id="monkeypatch">
-        <header>
-          <h1>Monkeypatched jQuery#val</h1>
-          <p>You have the option to use a build of this script that uses a monkeypatched <code>val()</code> function from jQuery. This monkeypatch adds a event trigger when setting a value on your select box, so you don't need to do anything special to update m. If you choose not to use the monkeypatch, it's just a matter of firing a change event on the select box after setting the value.</p>
-        </header>
-        
-        <div class="example-content">
-          <select name="test1" class="test1">
-            <option value="">Placeholder text.</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
-        </div>
-      </article>
-
       <article class="download" id="download">
         <header>
           <h1>Download</h1>
@@ -127,15 +127,27 @@
     /**
      * Some inline JavaScript for example purposes. Feel free to use any of this for your own projects.
      */
-    var $select1 = $('.test1').m({clickToOpen: false, arrowString: true});
+    // Basic example.
+    (function () {
+      var $select = $('.basic-example');
+      $select.m();
+    }());
     
-    $('button').on('click', function () {
-      $select1.val(event.target.className.substr(-1));
-    });
+    // Monkeypatch.
+    (function () {
+      // $('button').on('click', function () {
+      //   $select1.val(event.target.className.substr(-1));
+      // });
+    }());
     
-    $select1.on('change', function () {
-      console.log('change', $select1.val());
-    });
+    // Themes.
+    (function () {
+      var $lightTheme = $('.theme-light-test'),
+        $darkTheme = $('.theme-dark-test');
+        
+      $lightTheme.m({clickToOpen: true, arrowString: true, wrapperClass: 'theme-light'});
+      $darkTheme.m({clickToOpen: true, arrowString: true, wrapperClass: 'theme-dark'});
+    }());
   </script>
   
   <script>

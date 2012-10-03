@@ -1,4 +1,6 @@
 @import 'compass';
 
-@import 'modules/m-menu.scss';
-@include simple-custom-menus;
+/*
+  Import the main m file.
+*/
+@import 'm-themes/m-theme';
