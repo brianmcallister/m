@@ -1,1 +1,2 @@
+server: ./server.sh
 compass: bundle exec compass watch
