@@ -18,6 +18,7 @@
     // Set up options
     this.defaults = {
       classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
+      wrapperClass: null, // Pass a string to set a class on the wrapper element. Useful for custom themes.
       clickToOpen: false, // Click the title to open the dropdown list. Behaves like a regular select box.
       arrowString: false // Add a unicode arrow icon. Pass true, or your own unicode or even blank string.
     };
@@ -88,6 +89,11 @@
         // Wrap the select and update the $wrapper element.
         plugin.$select.wrap(plugin.$wrapper);
         plugin.$wrapper = plugin.$select.parent();
+
+        // Add the wrapper class.
+        if (plugin.options.wrapperClass) {
+          plugin.$wrapper.addClass(privateApi.prefix(plugin.options.wrapperClass));
+        }
 
         // Create the list.
         $options.each(function (index, option) {
