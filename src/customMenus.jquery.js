@@ -16,12 +16,12 @@
       privateApi = {};
 
     // Set up options
-    this.originalOptions = options || {};
     this.defaults = {
       classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
       clickToOpen: false, // Click the title to open the dropdown list. Behaves like a regular select box.
       arrowString: false // Add a unicode arrow icon. Pass true, or your own unicode or even blank string.
     };
+    this.originalOptions = options || {};
     this.options = $.extend(this.defaults, this.originalOptions);
 
     /**
