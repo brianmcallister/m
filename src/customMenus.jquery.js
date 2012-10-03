@@ -8,6 +8,7 @@
 
   /**
    * m class
+   * @constructor
    * @author Brian McAllister - http://brianmcallister.com
    * @version 0.0.1
    */
