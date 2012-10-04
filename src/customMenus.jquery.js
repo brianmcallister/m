@@ -20,7 +20,7 @@
     this.defaults = {
       classPrefix: 'm', // Pass a string to set your own, or false to have nothing.
       wrapperClass: null, // Pass a string to set a class on the wrapper element. Useful for custom themes.
-      clickToOpen: false, // Click the title to open the dropdown list. Behaves like a regular select box.
+      clickToOpen: true, // Click the title to open the dropdown list. Behaves like a regular select box.
       arrowString: true // Add a unicode arrow icon. Pass true, or your own unicode or even blank string.
     };
     this.originalOptions = options || {};
