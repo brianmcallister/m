@@ -6,3 +6,114 @@
   Layout for the demo site.
 
 ---------------------------------- */
+/*
+  Global header.
+*/
+.global-header {
+  @include border-radius(0 0 2px 2px);
+  
+  padding: 10px columns(1);
+  position: relative;
+  background: $secondary;
+  
+  .watch-button {
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+  }
+}
+
+.global-logo {
+  @include squish-text;
+  @include background-2x('logo@2x.png');
+  
+  display: block;
+  width: image-width('logo.png');
+  height: image-height('logo.png');
+  background: 0 0 transparent no-repeat image-url('logo.png');
+}
+
+/*
+  Intro text.
+*/
+.intro {
+  @include background(linear-gradient(white, rgba(white, 0)));
+  
+  padding: 20px columns(1);
+  background-color: $lightgray;
+}
+
+/*
+  Examples.
+*/
+.examples {
+}
+
+.example {
+}
+
+.example-content {
+}
+
+.demo {
+  @include box-sizing(border-box);
+  
+  padding: 40px columns(1);
+  position: relative;
+  background-color: $lightgray;
+  
+  &:after {
+    content: 'EXAMPLE TIME:';
+    display: block;
+    font: 700 13px sans-serif;
+    color: $midgray;
+    text-shadow: 0 1px 1px white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+}
+
+.code {
+  @extend .demo;
+  @extend pre;
+  
+  font-family: monospace;
+  background-color: darken($lightgray, 2%);
+  
+  &:after {
+    content: 'LET\'S WRITE CODE:';
+  };
+}
+
+
+/** ----------------------------------
+
+    Themes example
+    
+---------------------------------- */
+.example-light-theme {
+  width: 300px;
+}
+
+.example-dark-theme {
+  width: 300px;
+}
+
+
+/** ----------------------------------
+
+    Monkeypatch example.
+    
+---------------------------------- */
+.monkeypatch-example-buttons {
+  padding: 40px columns(1);
+  
+  em {
+    display: block;
+    margin-bottom: 10px;
+    font: italic 12px $serif-stack;
+    color: $accent;
+  }
+}

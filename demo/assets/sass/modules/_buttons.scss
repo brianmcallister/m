@@ -1,0 +1,71 @@
+/** ----------------------------------
+
+  Buttons
+  -------
+
+  Buttons module.
+
+---------------------------------- */
+/*
+  Variable defaults.
+*/
+$green: green !default;
+
+/*
+  Mixon.
+*/
+@mixin buttons() {
+  button,
+  a.button {
+    @include default-button-layout;
+  }
+  
+  button {
+    @include reset-button;
+  }
+}
+
+
+/** ----------------------------------
+
+    Module utilities.
+    
+---------------------------------- */
+
+
+/** ----------------------------------
+
+    Module mixins.
+    
+---------------------------------- */
+/*
+  Default button layout mixin.
+*/
+@mixin default-button-layout() {
+  @include inline-block;
+  @include border-radius;
+  @include transition(background-color .1s ease-out);
+  
+  padding: 10px 20px;
+  color: white;
+  font-weight: 700;
+  background-color: $green;
+  
+  &:hover {
+    background-color: darken($green, 5%);
+  }
+  
+  &:active {
+    padding-top: 11px;
+    padding-bottom: 9px;
+    background-color: darken($green, 7%);
+  }
+}
+
+/*
+  Reset button mixin.
+*/
+@mixin reset-button() {
+  border: 0;
+  outline: 0;
+}

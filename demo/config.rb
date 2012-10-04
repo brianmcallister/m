@@ -2,12 +2,12 @@
 require 'susy'
 
 # Set this to the root of your project when deployed:
-asset_path      = 'assets/'
+asset_path      = '/assets/'
 
 http_path       = '/'
 css_dir         = asset_path + 'css'
 sass_dir        = asset_path + 'sass'
-# images_dir      = asset_path + 'images'
+images_dir      = asset_path + 'images'
 javascripts_dir = asset_path + 'js'
 
 # You can select your preferred output style here (can be overridden via the command line):

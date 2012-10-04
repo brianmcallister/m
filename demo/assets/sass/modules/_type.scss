@@ -1,0 +1,80 @@
+/** ----------------------------------
+
+  Type
+  ----
+
+  Type module.
+
+---------------------------------- */
+/*
+  Variable defaults.
+*/
+$sans-stack: sans-serif !default;
+$serif-stack: serif !default;
+$base-font-size: 16px !default;
+$primary: #666 !default;
+
+/*
+  Mixon.
+*/
+@mixin type() {
+  #{headings(2)} {
+    @include default-headings;
+  }
+  
+  @include specific-headers;
+  @include default-type;
+  @include default-links;
+}
+
+
+/** ----------------------------------
+
+    Module utilities.
+    
+---------------------------------- */
+
+
+/** ----------------------------------
+
+    Module mixins.
+    
+---------------------------------- */
+/*
+  Default headings mixin.
+*/
+@mixin default-headings() {
+  font-family: $serif-stack;
+  font-weight: 400;
+  color: $primary;
+}
+
+/*
+  Specific headers mixin.
+*/
+@mixin specific-headers() {
+  h1 {
+    font-size: 2.5em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+/*
+  Default type mixin.
+*/
+@mixin default-type() {
+  p {
+    font: #{$base-font-size}/1.5em $sans-stack;
+    color: $primary;
+  }
+}
+
+/*
+  Default links mixin.
+*/
+@mixin default-links() {
+  
+}

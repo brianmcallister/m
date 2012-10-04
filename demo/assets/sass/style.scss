@@ -10,16 +10,35 @@
 @import 'susy';
 
 /*
-  Third party css
+  Normalize.
 */
 @import 'third-party/normalize';
 
+/*
+  Theme files.
+*/
+@import 'variables';
+@import 'mixins';
+@import 'extendables';
+
+/*
+  Third party css
+*/
 /* Import the main m file. */
 @import 'third-party/m-themes/m-theme';
 
 /*
+  Modules.
+*/
+@import 'modules/type';
+@import 'modules/buttons';
+
+/* Module includes. */
+@include type;
+@include buttons;
+
+/*
   Layouts
 */
-@import 'layouts/demo';
 @import 'layouts/website';
-
+@import 'layouts/demo';
