@@ -1,0 +1,20 @@
+/** ----------------------------------
+
+  Variables
+  ---------
+
+---------------------------------- */
+/*
+  Susy config.
+*/
+/* Defaults. */
+$total-columns: 16;
+$column-width: 2.5em;
+$gutter-width: 1.250em;
+$grid-padding: $gutter-width;
+$show-grid-backgrounds: false;
+
+/* Layouts. */
+$break-desktop: 801px 16;
+$break-tablet: 401px 8 800px;
+$break-phone: 6 400px;

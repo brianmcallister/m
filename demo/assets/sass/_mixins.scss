@@ -1,0 +1,35 @@
+/** ----------------------------------
+
+  Mixins
+  ------
+
+---------------------------------- */
+/*
+  Convenience mixins for breakpoints.
+*/
+@mixin desktop() {
+  @include at-breakpoint($break-desktop) {
+    @content
+  }
+}
+
+@mixin tablet() {
+  @include at-breakpoint($break-tablet) {
+    @content
+  }
+}
+
+@mixin phone() {
+  @include at-breakpoint($break-phone) {
+    @content
+  }
+}
+
+/*
+  Show grid backgrounds.
+*/
+@mixin grid-bg() {
+  @if $show-grid-backgrounds == true {
+    @include susy-grid-background;
+  }
+}
