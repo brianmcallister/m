@@ -2,3 +2,4 @@ source 'http://rubygems.org'
 gem "compass", "~> 0.13.alpha.0"
 gem "susy", "~> 1.0.1"
 gem "foreman", "~> 0.60.0"
+gem "guard-livereload", "~> 1.0.1"
