@@ -133,8 +133,15 @@
     Monkeypatch example.
     
 ---------------------------------- */
+.monkeypatch {
+  .m-select-box-wrapper {
+    display: block;
+    max-width: 300px;
+  }
+}
+
 .monkeypatch-example-buttons {
-  padding: 40px columns(1);
+  padding: 40px columns(1) 40px 0;
   
   em {
     display: block;

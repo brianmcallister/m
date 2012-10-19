@@ -24,7 +24,7 @@
     <header class="global-header">
       <a href="http://brianmcallister.com" class="global-logo">Brian W. McAllister</a>
       
-      <iframe class="watch-button" src="http://ghbtns.com/github-btn.html?user=brianmcallister&repo=m&type=watch&count=true&size=large"
+      <iframe class="watch-button" src="http://ghbtns.com/github-btn.html?user=brianmcallister&amp;repo=m&amp;type=watch&amp;count=true&amp;size=large"
         allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
     </header>
     
@@ -62,8 +62,33 @@ $('select').m();
       <article class="example available-settings" id="available-settings">
         <header>
           <h1>Available Settings</h1>
-          <p>stuff you can change...</p>
         </header>
+        
+        <div class="example-content">
+          <div class="settings-block">
+            <span class="setting-name">classPrefix</span>
+            <span class="setting-type">String</span>
+            <p class="description">Pass a string to set your own, or false to have nothing.</p>
+          </div>
+          
+          <div class="settings-block">
+            <span class="setting-name">wrapperClass</span>
+            <span class="setting-type">String</span>
+            <p class="description">Pass a string to set a class on the wrapper element. Useful for custom themes.</p>
+          </div>
+          
+          <div class="settings-block">
+            <span class="setting-name">clickToOpen</span>
+            <span class="setting-type">Boolean</span>
+            <p class="description">Click the title to open the dropdown list. Behaves like a regular select box.</p>
+          </div>
+          
+          <div class="settings-block">
+            <span class="setting-name">arrowString</span>
+            <span class="setting-type">Boolean or String</span>
+            <p class="description">Add a unicode arrow icon. Pass true, or your own unicode or even blank string.</p>
+          </div>
+        </div>
       </article>
       
       <article class="example themes" id="themes">
