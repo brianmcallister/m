@@ -10,18 +10,27 @@
   Variable defaults.
 */
 $green: green !default;
+$red: red !default;
+$button-selectors: 'a.button, button';
 
 /*
   Mixon.
 */
 @mixin buttons() {
-  button,
-  a.button {
+  #{$button-selectors} {
     @include default-button-layout;
+    
+    &.red {
+      @include set-button-color($red);
+    }
   }
   
   button {
     @include reset-button;
+  }
+  
+  .button-bar {
+    @include button-bar-layout;
   }
 }
 
@@ -61,14 +70,14 @@ $green: green !default;
   @include transition(background-color .1s ease-out);
   @include set-button-color($green);
   
-  padding: 10px 20px;
+  padding: 15px 25px;
   color: white;
-  font-weight: 700;
+  text-decoration: none;
   background-color: $green;
     
   &:active {
-    padding-top: 11px;
-    padding-bottom: 9px;
+    padding-top: 16px;
+    padding-bottom: 14px;
   }
 }
 
@@ -78,4 +87,26 @@ $green: green !default;
 @mixin reset-button() {
   border: 0;
   outline: 0;
+}
+
+/*
+  Button bar layout mixin.
+*/
+@mixin button-bar-layout() {
+  @include pie-clearfix;
+  
+  #{$button-selectors} {
+    float: left;
+    
+    &:first-child,
+    &:first-of-type {
+      @include border-top-right-radius(0);
+      @include border-bottom-right-radius(0);
+    }
+    
+    &:last-child {
+      @include border-top-left-radius(0);
+      @include border-bottom-left-radius(0);
+    }
+  }
 }

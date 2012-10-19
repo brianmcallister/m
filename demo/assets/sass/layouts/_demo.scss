@@ -54,6 +54,8 @@
 }
 
 .example-content {
+  @include pie-clearfix;
+  
   position: relative;
 }
 
@@ -95,28 +97,30 @@
     
 ---------------------------------- */
 .themes {
-  .example-content {
-    height: 140px;
+  .button-bar {
+    margin-top: 50px;
+  }
+  
+  .m-select-box-wrapper {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
   }
 }
 
 .example-light-theme {
   @include box-sizing(border-box);
   
+  float: left;
   width: 50%;
-  height: 100%;
   padding: 50px;
-  position: absolute;
-  top: 0;
-  left: 0;
   background: #f6f6f6;
 }
 
 .example-dark-theme {
   @extend .example-light-theme;
   
-  left: auto;
-  right: 0;
+  float: right;
   background: #f2f2f2;
 }
 
