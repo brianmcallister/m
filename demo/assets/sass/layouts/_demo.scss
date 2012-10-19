@@ -54,6 +54,7 @@
 }
 
 .example-content {
+  position: relative;
 }
 
 .demo {
@@ -84,7 +85,7 @@
   
   &:after {
     content: 'LET\'S WRITE CODE:';
-  };
+  }
 }
 
 
@@ -93,12 +94,30 @@
     Themes example
     
 ---------------------------------- */
+.themes {
+  .example-content {
+    height: 140px;
+  }
+}
+
 .example-light-theme {
-  width: 300px;
+  @include box-sizing(border-box);
+  
+  width: 50%;
+  height: 100%;
+  padding: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f6f6f6;
 }
 
 .example-dark-theme {
-  width: 300px;
+  @extend .example-light-theme;
+  
+  left: auto;
+  right: 0;
+  background: #f2f2f2;
 }
 
 

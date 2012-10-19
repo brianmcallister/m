@@ -31,6 +31,20 @@ $green: green !default;
     Module utilities.
     
 ---------------------------------- */
+/*
+  Set button color mixin.
+*/
+@mixin set-button-color($color) {
+  background-color: $color;
+  
+  &:hover {
+    background-color: darken($color, 5%);
+  }
+  
+  &:active {
+    background-color: darken($color, 7%);
+  }
+}
 
 
 /** ----------------------------------
@@ -45,20 +59,16 @@ $green: green !default;
   @include inline-block;
   @include border-radius;
   @include transition(background-color .1s ease-out);
+  @include set-button-color($green);
   
   padding: 10px 20px;
   color: white;
   font-weight: 700;
   background-color: $green;
-  
-  &:hover {
-    background-color: darken($green, 5%);
-  }
-  
+    
   &:active {
     padding-top: 11px;
     padding-bottom: 9px;
-    background-color: darken($green, 7%);
   }
 }
 
