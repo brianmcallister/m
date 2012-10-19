@@ -11,6 +11,8 @@
 */
 $green: green !default;
 $red: red !default;
+$gray: #bfbfbf !default;
+$darkgray: #737373 !default;
 $button-selectors: 'a.button, button';
 
 /*
@@ -20,8 +22,8 @@ $button-selectors: 'a.button, button';
   #{$button-selectors} {
     @include default-button-layout;
     
-    &.red {
-      @include set-button-color($red);
+    &.dark {
+      @include set-button-color($darkgray);
     }
   }
   
@@ -66,14 +68,13 @@ $button-selectors: 'a.button, button';
 */
 @mixin default-button-layout() {
   @include inline-block;
-  @include border-radius;
+//  @include border-radius;
   @include transition(background-color .1s ease-out);
-  @include set-button-color($green);
+  @include set-button-color($gray);
   
   padding: 15px 25px;
   color: white;
   text-decoration: none;
-  background-color: $green;
     
   &:active {
     padding-top: 16px;
