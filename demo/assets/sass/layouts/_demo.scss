@@ -98,17 +98,32 @@
 ---------------------------------- */
 .available-settings {
   @include pie-clearfix;
+  
+  .setting-name {
+    color: #4CA73D;
+  }
+  
+  .setting-type {
+    font-family: monospace;
+  }
+  
+  .setting-demo {
+    padding: 5px;
+    background: #ffffee;
+  }
 }
 
 .settings-block {
   @include box-sizing(border-box);
-  
-  outline: 1px solid red;
-  
+  @include tablet {
+    @include reset-columns;
+  }
+
   float: left;
   width: 50%;
   padding: column();
 }
+
 
 /** ----------------------------------
 
