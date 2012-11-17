@@ -93,7 +93,26 @@
 
 /** ----------------------------------
 
-    Themes example
+    Options example.
+    
+---------------------------------- */
+.available-settings {
+  @include pie-clearfix;
+}
+
+.settings-block {
+  @include box-sizing(border-box);
+  
+  outline: 1px solid red;
+  
+  float: left;
+  width: 50%;
+  padding: column();
+}
+
+/** ----------------------------------
+
+    Themes example.
     
 ---------------------------------- */
 .themes {
@@ -101,12 +120,15 @@
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: 1;
   }
   
   .m-select-box-wrapper {
     display: block;
     max-width: 300px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
 }
 
@@ -115,7 +137,7 @@
   
   float: left;
   width: 50%;
-  padding: 50px 50px 100px 50px;
+  padding: 50px;
   position: relative;
   background: #f6f6f6;
 }
