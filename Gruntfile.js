@@ -6,8 +6,8 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['src/m.jquery.js', 'src/m.valpatch.jquery.js'],
-        dest: 'dist/m.jquery.min.js'
+        src: 'src/*.js',
+        dest: 'dist/m.jquery.js'
       }
     }
   });
@@ -16,4 +16,7 @@ module.exports = function(grunt) {
   
   // Run tests?
   grunt.registerTask('default', ['concat']);
+  
+  
+  grunt.registerTask('build', 'Build the plugin files.', ['concat']);
 };
