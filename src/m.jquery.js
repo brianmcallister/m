@@ -26,20 +26,16 @@
     this.originalOptions = options || {};
     this.options = $.extend(this.defaults, this.originalOptions);
 
-    /**
-     * Initialize.
-     */
-    this.initialize = function () {
-      var pre = this.options.classPrefix;
+    // Initialization logic.
+    var pre = this.options.classPrefix;
 
-      // Set up the correct class prefix.
-      this.options.classPrefix = pre ? pre + '-' : '';
+    // Set up the correct class prefix.
+    this.options.classPrefix = pre ? pre + '-' : '';
 
-      privateApi.setElementReferences()
-        .buildCustomHtml()
-        .setPlaceholderText()
-        .bindCustomEvents();
-    };
+    privateApi.setElementReferences()
+      .buildCustomHtml()
+      .setPlaceholderText()
+      .bindCustomEvents();
 
     // Private methods.
     privateApi = {
@@ -262,8 +258,6 @@
         return this;
       }
     };
-
-    this.initialize();
   };
 
   // Add the function to jQuery.
