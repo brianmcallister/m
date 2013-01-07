@@ -1,0 +1,16 @@
+{
+  "name": "m",
+  "version": "0.0.0",
+  "description": "A super-simple way to style select elements.",
+  "author": "Brian W. McAllister",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brianmcallister/m.git"
+  },
+  "bugs": {},
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  }
+}
