@@ -10,6 +10,17 @@ module.exports = function(grunt) {
       }
     },
     
+    // Uglify task.
+    uglify: {
+      options: {},
+      dist: {
+        files: {
+          'dist/m.jquery.min.js': 'dist/m.jquery.js',
+          'dist/m.jquery-patched.min.js': 'dist/m.jquery-patched.js'
+        }
+      }
+    },
+    
     // Copy task.
     copy: {
       dist: {
@@ -21,6 +32,7 @@ module.exports = function(grunt) {
   });
   
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   
   // Run tests?
