@@ -266,28 +266,6 @@
     this.initialize();
   };
 
-  // // Monkeypatch jQuery#val to fire an event on our select.
-  // oldVal = $.fn.val;
-  // 
-  // $.fn.val = function (value) {
-  //   var $this = $(this),
-  //     elData = $this.data('m'),
-  //     newVal;
-  // 
-  //   // Call the old val() function...
-  //   newVal = oldVal.apply(this, arguments);
-  // 
-  //   // ...fire our custom event...
-  //   if (elData && value) {
-  //     elData.patchedVal = true;
-  //     $this.data('m', elData);
-  //     $this.trigger('change');
-  //   }
-  // 
-  //   // ...return the value as the old val() does.
-  //   return newVal;
-  // };
-
   // Add the function to jQuery.
   $.fn.m = function (options) {
     return this.each(function () {
