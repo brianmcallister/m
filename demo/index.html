@@ -1,0 +1,226 @@
+<!doctype html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Custom Select jQuery Plugin</title>
+    <meta name="description" content="Custom Select jQuery Plugin">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,400italic" rel="stylesheet" type="text/css">
+    
+    <script data-main="assets/js/script" src="assets/js/lib/require.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header class="global-header">
+      <a href="http://brianmcallister.com" class="global-logo">Brian W. McAllister</a>
+      
+      <iframe class="watch-button" src="http://ghbtns.com/github-btn.html?user=brianmcallister&amp;repo=m&amp;type=watch&amp;count=true&amp;size=large"
+        allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+    </header>
+    
+    <div class="intro">
+      <h2>Welcome to <strong class="m">m</strong>, the <em>mighty magical minimal macho menu</em>.</h2>
+      
+      <p>So here's the deal: a lightweight jQuery <code>select</code> element plugin. Enough features so you can drop it in your project without wreaking everything. Smart defaults, mobile &amp; AMD support, and <em>most importantly</em>, easy to write CSS for. If you're a designer that writes code, this is for you.</p>
+    </div>
+    
+    <hr>
+    
+    <div class="examples">
+      <article class="example default-settings" id="default-settings">
+        <header>
+          <h1>Basic Example</h1>
+          <p>This basic example uses default settings, with no CSS. Check out the HTML, it's clean and simple to make your job styling <strong>m</strong> easier.</p>
+        </header>
+        
+        <div class="example-content">
+          <div class="demo">
+            <select name="basic-example" class="basic-example">
+              <option value="">Placeholder text.</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+          </div>
+          
+          <div class="code">
+$('select').m();
+          </div>
+        </div>
+      </article>
+      
+      <article class="example available-settings" id="available-settings">
+        <header>
+          <h1>Available Settings</h1>
+        </header>
+        
+        <div class="example-content">
+          <div class="settings-block">
+            <span class="setting-name">classPrefix</span>
+            <span class="setting-type">String</span>
+            <p class="description">Pass a string to set your own, or false to have nothing.</p>
+            <code class="setting-demo">$('select').m({classPrefix: 'class-name'});</code>
+          </div>
+          
+          <div class="settings-block">
+            <span class="setting-name">wrapperClass</span>
+            <span class="setting-type">String</span>
+            <p class="description">Pass a string to set a class on the wrapper element. Useful for custom themes.</p>
+            <code class="setting-demo">$('select').m({wrapperClass: 'class-name'});</code>
+          </div>
+          
+          <div class="settings-block">
+            <span class="setting-name">clickToOpen</span>
+            <span class="setting-type">Boolean</span>
+            <p class="description">Click the title to open the dropdown list. Behaves like a regular select box.</p>
+            <code class="setting-demo">$('select').m({clickToOpen: true});</code>
+          </div>
+          
+          <div class="settings-block">
+            <span class="setting-name">arrowString</span>
+            <span class="setting-type">Boolean or String</span>
+            <p class="description">Add a unicode arrow icon. Pass true, or your own unicode or even blank string.</p>
+            <code class="setting-demo">$('select').m({arrowString: true});</code>
+          </div>
+        </div>
+      </article>
+      
+      <article class="example themes" id="themes">
+        <header>
+          <h1>Themes</h1>
+          <p>I know I said the whole point of <strong>m</strong> was to write your own CSS, but I've gone ahead and created two themes for you to use anyway. It's proof of how easy <strong>m</strong> is to style. I've included the Sass + Compass (how I've orignally written them) versions, and the compiled CSS versions (although you really should be using Sass by now, tsk tsk).</p>
+          <p>Made your own <strong>m</strong> theme? Let me know and I'll add it in here.</p>
+        </header>
+        
+        <div class="example-content">
+          <div class="example-light-theme">
+            <select name="theme-test-light" class="theme-light-test">
+              <option value="">Placeholder text.</option>
+              <option value="1">Theme Light Option 1</option>
+              <option value="2">Theme Light Option 2</option>
+              <option value="3">Theme Light Option 3</option>
+            </select>
+          </div>
+          
+          <div class="example-dark-theme">
+            <select name="theme-test-dark" class="theme-dark-test">
+              <option value="">Placeholder text.</option>
+              <option value="1">Theme Dark Option 1</option>
+              <option value="2">Theme Dark Option 2</option>
+              <option value="3">Theme Dark Option 3</option>
+            </select>
+          </div>
+        </div>
+      </article>
+      
+      <article class="example monkeypatch" id="monkeypatch">
+        <header>
+          <h1>Monkeypatched <a href="http://api.jquery.com/val/" target="_blank">jQuery#val</a></h1>
+          <p>The default build of <strong>m</strong> comes with a monkeypatched (<a href="http://en.wikipedia.org/wiki/Monkey_patch" target="_blank">what?</a>) <code>val()</code> function. There's also a build of <strong>m</strong> without the monkeypatch, if you're not into that sort of thing. If you don't use the patched <code>val()</code>, simply trigger your own event on the <code>select</code> element.</p>
+        </header>
+        
+        <div class="example-content">
+          <div class="demo">
+            <select name="monkeypatch-example" class="monkeypatch-example-select">
+              <option value="">Placeholder text.</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+            
+            <div class="monkeypatch-example-buttons">
+              <em>Click 'em:</em>
+              <button class="button1">Select option 1</button>
+              <button class="button2">Select option 2</button>
+              <button class="button3">Select option 3</button>
+            </div>
+          </div>
+          
+          <div class="code">
+var $select = $('.monkeypatch-example-select');
+$select.m();
+
+$('.monkeypatch-example-buttons').on('click', 'button', function (event) {
+  // Just use val() like you're already doing.
+  $select.<strong>val(</strong>event.target.className.substr(-1)<strong>)</strong>;
+});
+          </div>
+        </div>
+      </article>
+            
+      <article class="example download" id="download">
+        <header>
+          <h1>Download</h1>
+        </header>
+        
+        <div class="example-content button-bar">
+          <a href="https://github.com/brianmcallister/m" class="button">Visit the repository on Github</a>
+        </div>
+      </article>
+      
+      <article class="example licence" id="licence">
+        <header>
+          <h1>Licence</h1>
+        </header>
+        
+        <div class="example-content">
+          <p>Copyright &copy; 2012 Brian W. McAllister</p>
+          <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+          <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+          <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/lib/jquery-1.8.2.min.js"><\/script>')</script>
+  
+  <!-- TODO: Remove, and use the AMD method for this example. -->
+  <script src="https://raw.github.com/brianmcallister/m/master/dist/m.jquery-patched.min.js"></script>
+  
+  <script>
+    // Basic example.
+    (function () {
+      var $select = $('.basic-example');
+      $select.m();
+    }());
+    
+    // Themes.
+    (function () {
+      var $lightTheme = $('.theme-light-test'),
+        $darkTheme = $('.theme-dark-test');
+
+      $lightTheme.m({wrapperClass: 'theme-light'});
+      $darkTheme.m({wrapperClass: 'theme-dark'});
+    }());
+    
+    // Monkeypatch.
+    (function () {
+      var $select = $('.monkeypatch-example-select');
+      $select.m({wrapperClass: 'theme-light'});
+      
+      $('.monkeypatch-example-buttons').on('click', 'button', function (event) {
+        $select.val(event.target.className.substr(-1));
+      });
+    }());
+  </script>
+  
+  <script>  
+    // var _gaq=[['_setAccount','UA-35116809-1'],['_trackPageview']];
+    // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    // g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    // s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>

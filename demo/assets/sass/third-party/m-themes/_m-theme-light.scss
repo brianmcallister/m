@@ -1,0 +1,109 @@
+/** ----------------------------------
+
+  m Theme - Light
+  ---------------
+
+  Custom example theme for m.
+  
+  Uses:
+    _m-functions.scss
+    _m-variables.scss
+
+---------------------------------- */
+$light-theme-class: class-prefix('theme-light') !default;
+
+#{$wrapper}#{$light-theme-class} {
+  @include inline-block;
+  
+  width: 100%;
+  // Put a slight gap between the box and the dropdown without affecting layout.
+  margin-bottom: -5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: $m-light-darkgray;
+  position: relative;
+  
+  &:hover {
+    cursor: pointer;
+    
+    #{$list} {
+      display: block;
+    }
+  }
+  
+  /*
+    Select box.
+  */
+  #{$select} {
+    display: none;
+  }
+  
+  /*
+    Title container.
+  */
+  #{$title-wrap} {
+    @extend %ellipsis-text;
+    
+    @include box-sizing(border-box);
+    @include border-radius(4px);
+    
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 4px 40px 4px 10px;
+    position: relative;
+    background-color: $m-lightest;
+    border: 1px solid $m-light-gray;
+    
+    /*
+      Arrow icon container.
+    */
+    #{$arrow-icon} {
+      font-size: 1.2em;
+      color: $m-light-gray;
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
+  
+  /*
+    Dropdown list.
+  */
+  #{$list} {
+    @include border-radius(4px);
+    @include box-shadow(0 0 8px 0 rgba($m-darkest, .2));
+    @include box-sizing(border-box);
+    
+    display: none;
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    background-color: $m-lightest;
+    border: 1px solid $m-light-gray;
+    
+    & > li {
+      @include transition(background-color .2s ease-out);
+      
+      padding: 6px 10px;
+      
+      &:hover {
+        background-color: darken($m-lightest, 5%);
+      }
+
+      &:first-child {
+        @include border-radius(4px 4px 0 0);
+      }
+
+      &:last-child {
+        @include border-radius(0 0 4px 4px);
+      }
+
+      &.disabled {
+        display: none;
+      }
+    }
+  }
+}

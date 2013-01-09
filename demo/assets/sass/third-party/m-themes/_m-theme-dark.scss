@@ -1,0 +1,90 @@
+/** ----------------------------------
+
+  m Theme - Dark
+  --------------
+
+  Custom example theme for m.
+  
+  Uses:
+    _m-functions.scss
+    _m-variables.scss
+
+---------------------------------- */
+$dark-theme-class: class-prefix('theme-dark') !default;
+
+#{$wrapper}#{$dark-theme-class} {
+  @include inline-block;
+  
+  width: 100%;
+  font-size: 14px;
+  color: $m-dark-lightgray;
+  position: relative;
+  
+  &:hover {
+    cursor: pointer;
+    
+    #{$list} {
+      display: block;
+    }
+  }
+
+  /*
+    Select.
+  */
+  #{$select} {
+    display: none;
+  }
+  
+  /*
+    Title container.
+  */
+  #{$title-wrap} {
+    @extend %ellipsis-text;
+    
+    @include box-sizing(border-box);
+    
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px 40px 8px 10px;
+    position: relative;
+    background-color: $m-dark-darkgray;
+    
+    /*
+      Arrow icon container.
+    */
+    #{$arrow-icon} {
+      font-size: 1.2em;
+      line-height: 1.8em;
+      color: $m-dark-lightgray;
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
+    
+  
+  /*
+    Dropdown list.
+  */
+  #{$list} {
+    @include box-sizing(border-box);
+    
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    background-color: $m-dark-gray;
+    
+    & > li {
+      @include transition(background-color .2s ease-out);
+      
+      padding: 10px;
+      
+      &:hover {
+        background-color: $m-dark-midgray;
+      }
+    }
+  }
+}

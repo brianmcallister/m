@@ -1,0 +1,40 @@
+/** ----------------------------------
+
+  m Variables
+  -----------
+
+  Variables specific to the m jQuery plugin.
+  https://github.com/brianmcallister/m
+  
+  Uses:
+    _m-functions.scss
+
+---------------------------------- */
+/*
+  User-settable variables.
+*/
+/* Config. */
+$m-class-prefix: 'm' !default;
+
+/* m Colors. */
+$m-darkest: black !default;
+$m-lightest: white !default;
+
+/* Included themes. */
+$m-light-gray: #a3a3a3 !default;
+$m-light-darkgray: #272324 !default;
+$m-dark-lightgray: #ebebeb !default;
+$m-dark-gray: #2a2a2a !default;
+$m-dark-midgray: #1d1d1d !default;
+$m-dark-darkgray: #0e0f11 !default;
+
+/*
+  Class names.
+  These map directly to the HTML output by the plugin.
+*/
+$wrapper: class-prefix('select-box-wrapper');
+$select: class-prefix('select');
+$title-wrap: class-prefix('title-wrap');
+$title-target: class-prefix('title-target');
+$arrow-icon: class-prefix('arrow-icon');
+$list: class-prefix('list');

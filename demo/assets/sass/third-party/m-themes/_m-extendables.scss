@@ -1,0 +1,17 @@
+/** ----------------------------------
+
+  m Extendables
+  -------------
+
+  Extendables specific to the m jQuery plugin.
+  https://github.com/brianmcallister/m
+
+---------------------------------- */
+/*
+  Ellipsis text.
+*/
+%ellipsis-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

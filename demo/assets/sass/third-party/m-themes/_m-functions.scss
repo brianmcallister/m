@@ -1,0 +1,25 @@
+/** ----------------------------------
+
+  m Functions
+  -----------
+
+  Functions specific to the m jQuery plugin.
+  https://github.com/brianmcallister/m
+
+---------------------------------- */
+/*
+  Class prefix
+  @param {String} $class A string to use as a prefix for m's class names.
+  @returns {String} The prefixed class name.
+*/
+@function class-prefix($class) {
+  $output: '';
+  
+  @if $m-class-prefix != '' {
+    $output: '.#{$m-class-prefix}-#{$class}';
+  } @else {
+    $output: '.#{$class}';
+  }
+  
+  @return $output;
+}

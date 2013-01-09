@@ -1,0 +1,58 @@
+/** ----------------------------------
+
+  Mixins
+  ------
+
+---------------------------------- */
+/*
+  Convenience mixins for breakpoints.
+*/
+@mixin desktop() {
+  @include at-breakpoint($break-desktop) {
+    @content
+  }
+}
+
+@mixin tablet() {
+  @include at-breakpoint($break-tablet) {
+    @content
+  }
+}
+
+@mixin phone() {
+  @include at-breakpoint($break-phone) {
+    @content
+  }
+}
+
+/*
+  Show grid backgrounds.
+*/
+@mixin grid-bg() {
+  @if $show-grid-backgrounds == true {
+    @include susy-grid-background;
+  }
+}
+
+/*
+  Background @ 2x mixin.
+*/
+@mixin background-2x($image) {
+  @include retina {
+    background-image: image-url($image);
+    background-size: 100%;
+  }
+}
+
+/*
+  Retina mixin.
+*/
+@mixin retina($ratio: 1.3) {
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+  only screen and (min--moz-device-pixel-ratio: $ratio),
+  only screen and (-o-min-device-pixel-ratio: ($ratio * 10) / 10),
+  only screen and (min-resolution: #{round($ratio * 96)}dpi),
+  only screen and (min-resolution: #{$ratio}dppx) {
+    @content;
+  }
+}
