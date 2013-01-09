@@ -106,18 +106,18 @@ $('select').m();
           <div class="example-light-theme">
             <select name="theme-test-light" class="theme-light-test">
               <option value="">Placeholder text.</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <option value="1">Theme Light Option 1</option>
+              <option value="2">Theme Light Option 2</option>
+              <option value="3">Theme Light Option 3</option>
             </select>
           </div>
           
           <div class="example-dark-theme">
             <select name="theme-test-dark" class="theme-dark-test">
               <option value="">Placeholder text.</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <option value="1">Theme Dark Option 1</option>
+              <option value="2">Theme Dark Option 2</option>
+              <option value="3">Theme Dark Option 3</option>
             </select>
           </div>
         </div>
@@ -191,7 +191,8 @@ $('.monkeypatch-example-buttons').on('click', 'button', function (event) {
   <script>window.jQuery || document.write('<script src="assets/js/lib/jquery-1.8.2.min.js"><\/script>')</script>
   
   <!-- TODO: Remove, and use the AMD method for this example. -->
-  <script src="assets/js/lib/m.jquery-patched.min.js"></script>
+  <script src="assets/js/lib/m.jquery.js"></script>
+  <script src="assets/js/lib/m.valpatch.jquery.js"></script>
   
   <script>
     // Basic example.
@@ -204,7 +205,7 @@ $('.monkeypatch-example-buttons').on('click', 'button', function (event) {
     (function () {
       var $lightTheme = $('.theme-light-test'),
         $darkTheme = $('.theme-dark-test');
-        
+
       $lightTheme.m({wrapperClass: 'theme-light'});
       $darkTheme.m({wrapperClass: 'theme-dark'});
     }());
