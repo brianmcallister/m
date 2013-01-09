@@ -1,3 +1,9 @@
+/*!
+	m: A super-simple way to style select elements.
+	Brian W. McAllister • http://brianmcallister.com
+
+	This build: v0.0.1, 2013-01-09
+*/
 /*jslint browser: true, indent: 2, maxlen: 80, nomen: true, plusplus: true */
 /*global define, $ */
 

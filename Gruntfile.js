@@ -1,3 +1,11 @@
+// TODO - Figure out how to make a banner task or something that will apply
+// the banner to ALL the files.
+var banner = '/*!' +
+  '\n\t<%= pkg.name %>: <%= pkg.description %>' +
+  '\n\t<%= pkg.author %> • http://brianmcallister.com' +
+  '\n\n\tThis build: v<%= pkg.version %>, <%= grunt.template.today("yyyy-mm-dd") %>' +
+  '\n*/\n';
+
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -9,6 +17,9 @@ module.exports = function(grunt) {
     
     // Concat task.
     concat: {
+      options: {
+        banner: banner
+      },
       dist: {
         src: 'src/*.js',
         dest: 'dist/m.jquery-patched.js'
@@ -17,7 +28,9 @@ module.exports = function(grunt) {
     
     // Uglify task.
     uglify: {
-      options: {},
+      options: {
+        banner: banner
+      },
       dist: {
         files: {
           'dist/m.jquery.min.js': 'dist/m.jquery.js',
@@ -33,7 +46,7 @@ module.exports = function(grunt) {
           'dist/m.jquery.js': 'src/m.jquery.js'
         }
       }
-    }
+    },
   });
   
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -41,11 +54,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   
-  // Run tests?
-  grunt.registerTask('default', ['concat']);
-  
   // Build task.
   grunt.registerTask('build', 'Build the plugin files.', [
     'clean', 'concat', 'copy', 'uglify'
   ]);
+  
+  // Run tests?
+  grunt.registerTask('default', ['build']);
 };
