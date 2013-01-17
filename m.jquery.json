@@ -1,0 +1,34 @@
+{
+  "name": "m",
+  "title": "m",
+  "description": "A super-simple way to style select elements.",
+  "keywords": [
+    "ui",
+    "form"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Brian Wm. McAllister",
+    "url": "http://www.brianmcallister.com"
+  },
+  "maintainers": [
+    {
+      "name": "Brian Wm. McAllister",
+      "email": "brian@brianmcallister.com",
+      "url": "http://www.brianmcallister.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/brianmcallister/m/master/LICENSE"
+    }
+  ],
+  "bugs": "https://github.com/brianmcallister/m/issues",
+  "homepage": "http://www.brianmcallister.com/m/",
+  "docs": "http://www.brianmcallister.com/m/",
+  "download": "https://github.com/brianmcallister/m",
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}
