@@ -2,7 +2,7 @@
 require 'susy'
 
 # Set this to the root of your project when deployed:
-asset_path      = '/assets/'
+asset_path      = 'assets/'
 
 http_path       = '/'
 css_dir         = asset_path + 'css'
