@@ -165,7 +165,7 @@ $('.monkeypatch-example-buttons').on('click', 'button', function (event) {
         
         <div class="example-content button-bar">
           <a href="https://github.com/brianmcallister/m" class="button">Visit the repository on Github</a>
-          <a href="https://github.com/brianmcallister/m-themes" class="button dark">Visit the repository for the themes.</a>
+          <a href="https://github.com/brianmcallister/m-themes" class="button dark theme-repository">Visit the repository for the themes.</a>
         </div>
       </article>
       
@@ -222,6 +222,14 @@ $('.monkeypatch-example-buttons').on('click', 'button', function (event) {
     // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     // g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     // s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+  
+  <script type="text/javascript">
+    var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+    analytics.load("rqzh168mss");
+    
+    var $link = ('.theme-repository');
+    analytics.trackLink($link, 'Clicked the themes respository link');
   </script>
 </body>
 </html>
